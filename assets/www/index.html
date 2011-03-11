@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <link rel="stylesheet" href="jqm/jquery.mobile-1.0a2.min.css" />
+        <script type="text/javascript"  src="phonegap-0.9.3.js"></script>
+        <script src="jqm/jquery-1.4.4.min.js"></script>
+        <script src="jqm/jquery.mobile-1.0a2.min.js"></script>
+        <script type="text/javascript" src="TerpTracker.js"></script>
+    </head>
+    <body onload="onLoad()">
+    	
+		<!-- -----------------------------------------------------------------------
+		Main 
+		----------------------------------------------------------------------- -->
+        <div data-role="page" >
+            <div data-role="header" data-position="fixed">
+                <h1>TimeSheeter</h1>
+            </div>
+            <div data-role="content">
+            	
+				
+                <ul data-role="listview" data-theme="b">
+                    <li>
+                        <a href="#tracking"></a>
+						<h2>Track Action</h2>
+						<p>Capture action, gps, and date/time stamp</p>
+                    </li>
+					<li>
+                        <a href="#export_page"></a>
+						<h2>Export Time Sheet</h2>
+						<p>Start using your data</p>
+                    </li>
+                    <li>
+                        <a href="#preferences_page"></a>
+						<h2>Preferences</h2>
+						<p>Build client and action list </p>
+                    </li>
+                 
+					<li>
+						<a href="#faq_page"></a>
+						<h2>FAQ Page</h2>
+						<p>Questions, answers, and more information</p>
+					</li>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+               &nbsp;
+            </div>
+        </div>
+		
+		
+		<!-- -----------------------------------------------------------------------
+		Client Listing and Actions Listing 
+		----------------------------------------------------------------------- -->
+		<div data-role="page" id="preferences_page">
+            <div data-role="header" data-position="fixed" >
+                <h1>Clients</h1>
+            </div>
+            <div data-role="content">
+			
+			    <label for="Clients">Clients:</label>
+			    <textarea type="text" name="Clients" id="Clients"></textarea>
+				
+				 
+				<!-- LatField -->
+			    <label for="ActionsTextArea">Actions:</label>
+			    <textarea type="text" name="ActionsTextArea" id="ActionsTextArea"></textarea>
+				
+				<a href="#" id="pref_save_button" data-role="button" data-theme="b">Save</a>
+			
+	
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h4>Page Footer</h4>
+            </div>
+        </div>
+		
+        <!-- -----------------------------------------------------------------------
+		Tracking
+		----------------------------------------------------------------------- -->
+        <div data-role="page" id="tracking" data-position="fixed">
+            <div data-role="header">
+                <h1>Track</h1>
+            </div>
+            <div data-role="content">
+                <!-- Client List -->
+                <select name="dropdown_client" id="dropdown_client"  data-theme="b">
+                    <option>No client's added</option>
+                </select>
+                <!-- Action List -->
+                <select name="dropdown_action" id="dropdown_action"  data-theme="b">
+                    <option>No client's added</option>
+                </select>
+                <!-- Associated Data -->
+                <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+                    <li data-role="list-divider">
+                        Captured Data
+                    </li>
+                    <li>
+                        <span id="LatField" data-inline="true">LAT</span>
+                    </li>
+                    <li>
+                        <span id="LonField" data-inline="true">LON</span>
+                    </li>
+                    <li>
+                        <span id="TmeField" data-inline="true">Time</span>
+                    </li>
+                </ul>
+				<a href="#" id="tracking_saveentry_button" data-role="button"  data-theme="b">Track Action</a>
+				
+            </div>
+           
+        </div>
+		
+		<!-- -----------------------------------------------------------------------
+		Export Docket or Time sheet 
+		----------------------------------------------------------------------- -->
+		<div data-role="page" id="export_page">
+            <div data-role="header" data-position="fixed" >
+                <h1>Export Timesheet Docket</h1>
+            </div>
+            <div data-role="content">
+			  <ul data-role="listview" data-theme="b">
+                <li>
+                    <a href="#" id="export_button_saveToSD_card"></a>
+					<h2>Save to SD Card</h2>
+					<p>Save Timesheet as a CSV file on your SD card</p>
+                </li>
+				<li>
+					<a href="#" id="export_button_seeFile"></a>
+					<h2>View File</h2>
+				</li>
+			</ul>
+			    
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h4>Page Footer</h4>
+            </div>
+        </div>
+		
+        <!-- -----------------------------------------------------------------------
+		FAQ  
+		----------------------------------------------------------------------- -->
+        <div data-role="page" id="faq_page" data-position="fixed">
+            <div data-role="header">
+                <h1>FAQ</h1>
+            </div>
+            <div data-role="content">
+                
+				<div data-role="collapsible" data-collapsed="true" data-theme="b">
+	                <h3>
+	                    Where is my time sheet saved? How do I access it?
+	                </h3>
+	                <p>
+	                    The time sheet is saved to a comma separated file (*.csv) to the devices 
+	                    sdcard in a folder called /sdcard/TerpTools/. Connect your device to your desktop,  
+	                    navigate to /sdcard/TerpTools/, and import TerpTimer.CSV into Excel. 
+	                </p>
+                </div>
+                <div data-role="collapsible" data-collapsed="true" data-theme="b">
+                    <h3>
+                        How do I access my file?
+                    </h3>
+                    <p>
+                        Connect your device to your desktop computer, navigate to 
+                        the CSV file on the SD card, and import TerpTimer.CSV into Excel 
+                        or any other spreadsheet software. 
+                    </p>
+                </div>
+				<div data-role="collapsible" data-collapsed="true" data-theme="b">
+                    <h3>
+                        So, this is beta right?
+                    </h3>
+                    <p>
+                        Yes, it's a work in progress. The developer is human and can 
+						make mistakes. Please don't depend soley on this utility (yet) 
+						for your record keeping.  
+                    </p>
+                </div>
+				<div data-role="collapsible" data-collapsed="true" data-theme="b">
+                    <h3>
+                        Suggestions and Comments
+                    </h3>
+                    <p>
+                        I welcome suggestions and comments. Please email 
+						<a href="mailto:TechTerp@gmail.com">TechTerp@gmail.com</a>
+                    </p>
+                </div>
+				
+				
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <a href="#debug_page" data-role="button">
+                    <br>
+                    Debug
+                    <br>
+                    &nbsp
+                </a>
+            </div>
+        </div>
+		
+		<!-- -----------------------------------------------------------------------
+		debug 
+		----------------------------------------------------------------------- -->
+		<div data-role="page" id="debug_page" data-position="fixed">
+            <div data-role="header">
+                <h1>Debug</h1>
+            </div>
+            <div data-role="content">
+               <span id="debug_area"></span>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h4></h4>
+            </div>
+        </div>
+		
+		
+    </body>
+</html>
